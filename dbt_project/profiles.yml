@@ -1,0 +1,12 @@
+# Profil dbt pour ce projet. Committé volontairement : contrairement à un
+# profil Postgres/Snowflake, il n'y a ici aucun identifiant sensible - juste
+# le chemin vers le fichier DuckDB local (le même que celui utilisé par
+# common/config.py et load/load.py). Objectif : que `dbt run` fonctionne
+# immédiatement après un clone, sans configuration manuelle de ~/.dbt/.
+online_retail:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "../warehouse.duckdb"
+      threads: 4

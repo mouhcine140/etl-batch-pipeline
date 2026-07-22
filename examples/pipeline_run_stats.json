@@ -1,0 +1,15 @@
+{
+  "source": "UCI Online Retail (mirroir CSV Databricks Spark-The-Definitive-Guide)",
+  "sample_file": "data/raw/2010-12-01.csv",
+  "row_counts": {
+    "raw_online_retail": 349,
+    "stg_online_retail": 349,
+    "dim_customers": 25,
+    "dim_products": 243,
+    "dim_date": 1,
+    "fact_order_lines": 349
+  },
+  "net_revenue_gbp": 14111.59,
+  "n_countries": 3,
+  "n_cancellations": 9
+}

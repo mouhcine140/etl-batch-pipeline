@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: raw_online_retail
+        description: >
+          Table de staging chargée par load/load.py à partir des CSV bruts
+          du dataset UCI Online Retail (transactions réelles, déc. 2010).
+        columns:
+          - name: invoice_no
+            description: "Numéro de facture. Préfixe 'C' = annulation."
+          - name: stock_code
+            description: "Référence produit."
+          - name: customer_id
+            description: "Identifiant client. Nul pour les commandes non rattachées à un compte."

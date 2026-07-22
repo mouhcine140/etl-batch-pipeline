@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Un client par ligne. 'UNKNOWN' regroupe les commandes sans compte client identifié."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: "Un produit (stock_code) par ligne, hors lignes d'annulation."
+    columns:
+      - name: stock_code
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: "Dimension date en spine continue, sans trous, sur la période couverte par les faits."
+    columns:
+      - name: date_day
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_order_lines
+    description: "Une ligne de facture par ligne (grain = order_line_id)."
+    columns:
+      - name: order_line_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: stock_code
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: stock_code
+              config:
+                where: "not is_cancellation"
+      - name: date_day
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day

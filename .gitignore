@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Données réelles téléchargées à l'exécution - seul l'échantillon du
+# 2010-12-01 (référence, sert aux tests) est commité.
+data/raw/*
+!data/raw/2010-12-01.csv
+
+# Bases DuckDB locales
+*.duckdb
+*.duckdb.wal
+
+# dbt
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+dbt_project/.user.yml
+
+# Airflow
+logs/
+airflow.cfg
+airflow.db
+standalone_admin_password.txt
+
+# Env
+.env
+
+# Tests
+.pytest_cache/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

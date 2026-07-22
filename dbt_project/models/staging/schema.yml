@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_online_retail
+    description: "Une ligne = une ligne de facture, nettoyée et typée."
+    columns:
+      - name: order_line_id
+        description: "Clé de substitution (hash invoice_no + stock_code + invoice_date)."
+        tests:
+          - not_null
+      - name: invoice_no
+        tests:
+          - not_null
+      - name: stock_code
+        tests:
+          - not_null
+      - name: invoice_date
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
